@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+   
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" language="javascript">
+        function create () {
+            debugger;
+            if (document.getElementById("username").value == '')
+        {
+            alert('please enter user name');
+        }
+            if (document.getElementById("password").value == '')
+        {
+            alert('please enter password');
+        }
+        
+            $.ajax({
+                url:"phpinfo.php",    //the page containing php script
+                type: "GET",    //request type,
+                dataType: 'json',
+                data: {registration: "success", name: "xyz", email: "abc@gmail.com"},
+                success:function(result){
+                   alert(data);
+                },
+    error: function(XMLHttpRequest, textStatus, errorThrown) { 
+        alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+    }
+                
+            });
+        }
+    </script>
+     <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <form id="loginForm">
+            <h2>Login</h2>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="create()">Login</button>
+            <div class="form-group"></div>
+            <div class="form-group">
+                <button class="btn btn-primary" onclick="window.location.href='signup.html'">Signup</button>
+            </div>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>
